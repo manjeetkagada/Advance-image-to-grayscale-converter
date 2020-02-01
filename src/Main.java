@@ -2,13 +2,22 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 
 public class Main {
 
     public static void main(String[] args) {
         int width;
         int height;
-        String path_input_file="D:\\java project\\IOG\\src\\input.jpg";
+      // String path_input_file="D:\\java project\\IOG\\src\\input.jpg";
+        Scanner in =new Scanner(System.in);
+
+        System.out.println("Enter the path of the file:");
+        String path_input_file=in.nextLine();
+
+
 
         BufferedImage image;
 
@@ -30,12 +39,22 @@ public class Main {
 
 
                 }
-                File outfie=new File("outfile.jpg");
-                ImageIO.write(image,"jpg",outfie);
+                 File outfile=new File("D:\\java project\\IOG\\outfile.jpg");
+                ImageIO.write(image,"jpg",outfile);
+
+
+
+
+
+
+
+
 
 
 
             }
+
+
 
 
 
@@ -46,8 +65,12 @@ public class Main {
 
         }
 
-
-
+        Desktop desktop=Desktop.getDesktop();
+        try {
+            desktop.open(new File("D:\\java project\\IOG\\outfile.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
